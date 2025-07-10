@@ -12,8 +12,9 @@ const InfoTab = ({height, timeFormat}) => {
     const theme = useThemeContext();
     
     // time related variables
-    const minutesTime = Number(timeFormat.split(' ')[0]);
-    const increment = Number(timeFormat.split(' ')[1]);
+    const safeTimeFormat = (timeFormat || '5 0'); // Default 5 minutes with 0 increment
+    const minutesTime = Number(safeTimeFormat.split(' ')[0]);
+    const increment = Number(safeTimeFormat.split(' ')[1]);
 
     // user times
     const [userTime, setUserTime] = React.useState(minutesTime * 60 * 1000);
